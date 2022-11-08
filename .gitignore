@@ -3,3 +3,4 @@
 **/*.git
 **/*.a
 **/libftTester
+**/gnlTester
