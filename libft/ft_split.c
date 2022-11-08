@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 20:49:28 by igncipri          #+#    #+#             */
-/*   Updated: 2022/10/30 16:34:40 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/08 22:32:19 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	**ft_split(char const *s, char c)
 	return (return_mtx);
 }
 /*
-static int	ft_string(char const *s, char c)
+static int	ft_word_leng(char const *s, char c)
 {
 	size_t	word_leng;
 	size_t	index;
@@ -125,26 +125,27 @@ static void	*ft_free(char **mtx, int index)
 
 char	**ft_split(char const *s, char c)
 {
-	int		index;
-	int		len;
-	char	**dest;
+	int			index;
+	int			len;
+	char		**return_mtx;
+	char const	*s;
 
 	if (!s)
 		return (NULL);
-	len = ft_string(s, c);
-	dest = (char **) malloc(sizeof(char *) * (len +1));
-	if (!dest)
+	len = ft_word_leng(s, c);
+	return_mtx = (char **) malloc(sizeof(char *) * (len +1));
+	if (!return_mtx)
 		return (NULL);
 	index = -1;
 	while (++index < len)
 	{
 		while (s[0] == c)
 			s++;
-		dest[index] = ft_create_string(s, c);
-		if (!dest[index])
-			return (ft_free(dest, index));
-		s = s + ft_strlen((char *)dest[index]);
+		return_mtx[index] = ft_create_string(s, c);
+		if (!return_mtx[index])
+			return (ft_free(return_mtx, index));
+		s = s + ft_strlen((char *)return_mtx[index]);
 	}
-	dest[index] = 0;
-	return (dest);
+	return_mtx[index] = 0;
+	return (return_mtx);
 }*/
