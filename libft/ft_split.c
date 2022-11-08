@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 20:49:28 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/08 22:32:19 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/08 22:55:57 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,37 +81,37 @@ char	**ft_split(char const *s, char c)
 	return (return_mtx);
 }
 /*
-static int	ft_word_leng(char const *s, char c)
+static int	ft_word_number(char const *s_cpy, char c)
 {
-	size_t	word_leng;
+	size_t	word_number;
 	size_t	index;
 
 	index = 0;
-	word_leng = 0;
-	while (s[index] != '\0')
+	word_number = 0;
+	while (s_cpy[index] != '\0')
 	{
-		while (s[index] == c)
+		while (s_cpy[index] == c)
 			index++;
-		if ((s[index] != c) && (s[index] != '\0'))
-			word_leng++;
-		while ((s[index] != c) && (s[index] != '\0'))
+		if ((s_cpy[index] != c) && (s_cpy[index] != '\0'))
+			word_number++;
+		while ((s_cpy[index] != c) && (s_cpy[index] != '\0'))
 			index++;
 	}
-	return (word_leng);
+	return (word_number);
 }
 
-static char	*ft_create_string(char const *s, char c)
+static char	*ft_create_word(char const *s_cpy, char c)
 {
 	char	*word_string;
 	int		index;
 
 	index = 0;
-	while ((s[index] != '\0') && (s[index] != c))
+	while ((s_cpy[index] != '\0') && (s_cpy[index] != c))
 		index++;
 	word_string = (char *) malloc(sizeof(char) * (index + 1));
 	if (!word_string)
 		return (NULL);
-	ft_strlcpy(word_string, s, index + 1);
+	ft_strlcpy(word_string, s_cpy, index + 1);
 	return (word_string);
 }
 
@@ -125,27 +125,28 @@ static void	*ft_free(char **mtx, int index)
 
 char	**ft_split(char const *s, char c)
 {
-	int			index;
-	int			len;
+	int			w_index;
+	int			w_number;
 	char		**return_mtx;
-	char const	*s;
+	char const	*s_cpy;
 
 	if (!s)
 		return (NULL);
-	len = ft_word_leng(s, c);
-	return_mtx = (char **) malloc(sizeof(char *) * (len +1));
+	s_cpy = s;
+	w_number = ft_word_number(s_cpy, c);
+	return_mtx = (char **) malloc(sizeof(char *) * (w_number + 1));
 	if (!return_mtx)
 		return (NULL);
-	index = -1;
-	while (++index < len)
+	w_index = -1;
+	while (++w_index < w_number)
 	{
-		while (s[0] == c)
-			s++;
-		return_mtx[index] = ft_create_string(s, c);
-		if (!return_mtx[index])
-			return (ft_free(return_mtx, index));
-		s = s + ft_strlen((char *)return_mtx[index]);
+		while (s_cpy[0] == c)
+			s_cpy++;
+		return_mtx[w_index] = ft_create_word(s_cpy, c);
+		if (!return_mtx[w_index])
+			return (ft_free(return_mtx, w_index));
+		s_cpy = s_cpy + ft_strlen((char *)return_mtx[w_index]);
 	}
-	return_mtx[index] = 0;
+	return_mtx[w_index] = 0;
 	return (return_mtx);
 }*/
