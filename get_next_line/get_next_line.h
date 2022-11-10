@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:15:01 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/10 22:19:41 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/10 23:00:01 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 80
+#  define BUFFER_SIZE 5
 # endif
 
 void	ft_bzero(void *s, size_t n);

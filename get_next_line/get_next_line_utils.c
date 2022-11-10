@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:14:52 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/10 22:24:38 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/10 22:54:28 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ size_t	ft_strlen(const char *s)
 	size_t	lenght;
 
 	lenght = 0;
+	if (!s)
+		return (0);
 	while (s[lenght] != '\0')
 		lenght++;
 	return (lenght);
@@ -76,8 +78,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!dst)
 		return (NULL);
 	index = 0;
-	while (*s1)
-		dst[index++] = *s1++;
+	if (s1)
+	{
+		while (*s1)
+			dst[index++] = *s1++;
+	}
 	while (*s2)
 		dst[index++] = *s2++;
 	dst[index] = '\0';
