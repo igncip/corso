@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:14:52 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/06 18:05:51 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/10 22:24:38 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*ft_strchr(const char *s, int c)
 	int	index;
 
 	index = 0;
+	if (!s)
+		return (NULL);
 	while (s[index] != '\0')
 	{
 		if (s[index] == ((char)c))
