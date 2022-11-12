@@ -83,8 +83,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		while (*s1)
 			dst[index++] = *s1++;
 	}
-	while (*s2)
-		dst[index++] = *s2++;
+	if (*s2)
+	{
+		while (*s2)
+			dst[index++] = *s2++;
+	}
 	dst[index] = '\0';
 	return (dst);
 }

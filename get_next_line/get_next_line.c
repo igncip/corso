@@ -17,11 +17,10 @@ char	*ft_get_return(char	**read_memory)
 	int		index;
 	char	*return_str;
 
-	index = 1;
+	index = 0;
 	if (!read_memory)
 		return (NULL);
-	while ((*read_memory)[index - 1] != '\n'
-		&& (*read_memory)[index - 1] != '\0')
+	while ((*read_memory)[index] != '\n' && (*read_memory)[index] != '\0')
 		index++;
 	return_str = (char *) ft_calloc (sizeof(char), index + 1);
 	if (!return_str)
@@ -37,8 +36,9 @@ char	*ft_get_return(char	**read_memory)
 
 char	*ft_read_buff(char **read_memory, int fd)
 {
-	char		*read_buff;
-	int			read_num;
+	char	*read_buff;
+	int		read_num;
+	char	*j_str;
 
 	if (ft_strchr (*read_memory, '\n'))
 		return (*read_memory);
@@ -56,10 +56,13 @@ char	*ft_read_buff(char **read_memory, int fd)
 			return ('\0');
 		}
 		else if (read_num > 0)
-			*read_memory = ft_strjoin(*read_memory, read_buff);
+		{
+			*j_str = ft_strjoin(*read_memory, read_buff);
+			free (read_buff);
+			free(*read_memory);
+		}
 	}
-	free (read_buff);
-	return (*read_memory);
+	return (*j_str);
 }
 
 	/*inserire controllo per file binario nella funzione sotto*/

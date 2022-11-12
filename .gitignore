@@ -5,4 +5,5 @@
 **/libftTester
 **/gnlTester
 **/get_next_line-surfi89
-
+**/.vscode
+/get_next_line/Makefile
