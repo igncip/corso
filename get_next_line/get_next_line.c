@@ -6,62 +6,79 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:15:11 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/10 23:15:15 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:38:53 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_get_return(char	**read_memory)
+char	*ft_strchr(const char *s, int c)
+{
+	int		index;
+	char	c_conv;
+
+	c_conv = (char)c;
+	index = 0;
+	if (!s)
+		return (NULL);
+	while (s[index] != '\0')
+	{
+		if (s[index] == (c_conv))
+			return (&(s[index]));
+		index++;
+	}
+	if ((c_conv) == '\0')
+		return (&(s[index]));
+	return (NULL);
+}
+
+char	*ft_get_return(char	*full_str)
 {
 	int		index;
 	char	*return_str;
 
+	return_str = ft_free(return_str);
 	index = 0;
-	if (!*read_memory)
+	if (!full_str)
 		return (NULL);
-	while ((*read_memory)[index] != '\n' && (*read_memory)[index] != '\0')
+	while ((full_str)[index] != '\n' && (full_str)[index] != '\0')
 		index++;
-	return_str = (char *) ft_calloc (sizeof(char), index + 1);
+	return_str = (char *) ft_calloc (index + 1, sizeof(char));
 	if (!return_str)
 	{
-		free(return_str);
-		free(*read_memory);
-		return (NULL);
+		return_str = ft_free(return_str);
+		return (return_str = ft_free(return_str));
 	}
 	while (--index >= 0)
-		return_str[index] = (*read_memory)[index];
+		return_str[index] = (full_str)[index];
 	return (return_str);
 }
 
-char	*ft_read_buff(char **read_memory, int fd)
+char	*ft_read_buff(char old_j_str, int fd)
 {
-	char	*read_buff;
-	int		read_num;
 	char	*j_str;
+	char	*new_r_buf;
+	int		r_num;
 
-	if (ft_strchr (*read_memory, '\n'))
-		return (*read_memory);
-	read_buff = (char *) ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (!read_buff)
-		return ('\0');
-	read_num = 1;
-	while (!ft_strchr (*read_memory, '\n') && read_num > 0)
+	j_str = ft_free(j_str);
+	new_r_buf = (char *) ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!new_r_buf)
+		return (new_r_buf = ft_free (new_r_buf));
+	if (ft_strchr(old_j_str, '\n'))
+		j_str = ft_strjoinevo(old_j_str, "", 1, 0);
+	else
 	{
-		read_num = read(fd, read_buff, BUFFER_SIZE);
-		if (read_num < 0)
+		j_str = old_j_str;
+		r_num = 1;
+		while ((ft_strchr(j_str, '\n')) && r_num > 0)
 		{
-			free (read_buff);
-			free(*read_memory);
-			return ('\0');
-		}
-		else if (read_num > 0)
-		{
-			j_str = ft_strjoin(*read_memory, read_buff);
-			free (read_buff);
-			free(*read_memory);
+			r_num = read(fd, new_r_buf, BUFFER_SIZE);
+			j_str = ft_strjoinevo(j_str, new_r_buf, 1, 0);
 		}
 	}
+	new_r_buf = ft_free(new_r_buf);
+	if (r_num < 0)
+		return (j_str = ft_free(j_str));
 	return (j_str);
 }
 
@@ -69,18 +86,27 @@ char	*ft_read_buff(char **read_memory, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*read_memory;
+	static char	*r_memory;
 	char		*return_str;
+	char		*r_buf_tmp;
 
+	return_str = ft_free(return_str);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	read_memory = ft_read_buff (&read_memory, fd);
-	return_str = ft_get_return (&read_memory);
-	read_memory = (ft_strchr (read_memory, '\n'));
-	if (read_memory && read_memory[0] == '\n')
-		read_memory++;
+	r_buf_tmp = ft_read_buff (&r_memory, fd);
+	if (r_buf_tmp == '\0')
+	{
+		r_memory = ft_free(r_memory);
+		return_str = ft_free(return_str);
+		return (r_buf_tmp = ft_free(r_buf_tmp));
+	}
+	r_memory = ft_free(r_memory);
+	return_str = ft_get_return (&r_buf_tmp);
+	r_memory = (ft_strchr (r_buf_tmp, '\n'));
+	r_buf_tmp = ft_free(r_buf_tmp);
 	return (return_str);
 }
+
 
 /*TEST SECTION*/
 #include <unistd.h>

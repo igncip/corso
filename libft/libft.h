@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 18:25:12 by igncipri          #+#    #+#             */
-/*   Updated: 2022/10/27 20:53:20 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/15 19:04:53 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+char	*ft_free(char const *str);
+char	*ft_strjoinevo(char const *s1, char const *s2, int f1 , int f2);
+size_t	ft_strlcpyevo(char *dst, const char *src, size_t size, int f1);
 
 typedef struct s_list
 {

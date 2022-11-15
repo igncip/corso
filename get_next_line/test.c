@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:15:11 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/10 23:15:15 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/15 18:26:59 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_read_buff(char *old_r_buf, int fd)
 	char	*j_str;
 
 	if (ft_strchr (old_r_buf, '\n'))
-		return (old_r_buf);
+		return (ft_strcpy (old_r_buf));
 	new_r_buf = (char *) ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!new_r_buf)
 	{
@@ -73,20 +73,18 @@ char	*get_next_line(int fd)
 	char		*return_str;
 	char		*r_buf_tmp;
 
+	return_str = ft_free(return_str);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	r_buf_tmp = ft_read_buff (&r_memory, fd);
 	if (r_buf_tmp == '\0')
 	{
-		free (all);
 		return (NULL);
 	}
-	free(r_memory);
+	r_memory = ft_free(r_memory);
 	return_str = ft_get_return (&r_buf_tmp);
 	r_memory = (ft_strchr (r_buf_tmp, '\n'));
-	free(r_buf_tmp);
-	if (r_memory && r_memory[0] == '\n')
-		r_memory++;
+	r_buf_tmp = ft_free(r_buf_tmp);
 	return (return_str);
 }
 
