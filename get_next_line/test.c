@@ -12,54 +12,54 @@
 
 #include "get_next_line.h"
 
-char	*ft_get_return(char	**read_memory)
+char	*ft_get_return(char	*r_memory)
 {
 	int		index;
 	char	*return_str;
 
 	index = 0;
-	if (!*read_memory)
+	if (!r_memory)
 		return (NULL);
-	while ((*read_memory)[index] != '\n' && (*read_memory)[index] != '\0')
+	while ((r_memory)[index] != '\n' && (r_memory)[index] != '\0')
 		index++;
 	return_str = (char *) ft_calloc (sizeof(char), index + 1);
 	if (!return_str)
 	{
 		free(return_str);
-		free(*read_memory);
 		return (NULL);
 	}
 	while (--index >= 0)
-		return_str[index] = (*read_memory)[index];
+		return_str[index] = (r_memory)[index];
 	return (return_str);
 }
 
-char	*ft_read_buff(char **read_memory, int fd)
+char	*ft_read_buff(char *old_r_buf, int fd)
 {
-	char	*read_buff;
+	char	*new_r_buf;
 	int		read_num;
 	char	*j_str;
 
-	if (ft_strchr (*read_memory, '\n'))
-		return (*read_memory);
-	read_buff = (char *) ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (!read_buff)
-		return ('\0');
-	read_num = 1;
-	while (!ft_strchr (*read_memory, '\n') && read_num > 0)
+	if (ft_strchr (old_r_buf, '\n'))
+		return (old_r_buf);
+	new_r_buf = (char *) ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!new_r_buf)
 	{
-		read_num = read(fd, read_buff, BUFFER_SIZE);
+		free (new_r_buf);
+		return ('\0');
+	}
+	read_num = 1;
+	while (!ft_strchr (j_str, '\n') && read_num > 0)
+	{
+		read_num = read(fd, new_r_buf, BUFFER_SIZE);
 		if (read_num < 0)
 		{
-			free (read_buff);
-			free(*read_memory);
+			free (new_r_buf);
 			return ('\0');
 		}
 		else if (read_num > 0)
 		{
-			j_str = ft_strjoin(*read_memory, read_buff);
-			free (read_buff);
-			free(*read_memory);
+			j_str = ft_strjoin(*old_r_buf, new_r_buf);
+			free (new_r_buf);
 		}
 	}
 	return (j_str);
@@ -69,16 +69,24 @@ char	*ft_read_buff(char **read_memory, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*read_memory;
+	static char	*r_memory;
 	char		*return_str;
+	char		*r_buf_tmp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	read_memory = ft_read_buff (&read_memory, fd);
-	return_str = ft_get_return (&read_memory);
-	read_memory = (ft_strchr (read_memory, '\n'));
-	if (read_memory && read_memory[0] == '\n')
-		read_memory++;
+	r_buf_tmp = ft_read_buff (&r_memory, fd);
+	if (r_buf_tmp == '\0')
+	{
+		free (all);
+		return (NULL);
+	}
+	free(r_memory);
+	return_str = ft_get_return (&r_buf_tmp);
+	r_memory = (ft_strchr (r_buf_tmp, '\n'));
+	free(r_buf_tmp);
+	if (r_memory && r_memory[0] == '\n')
+		r_memory++;
 	return (return_str);
 }
 
