@@ -47,7 +47,7 @@ size_t	ft_word_count(char const *s, char c)
 	return (w_number + 1);
 }
 
-void	*ft_free(char **mtx)
+void	*ft_free_mtx(char **mtx)
 {
 	free (mtx);
 	return (NULL);
@@ -65,7 +65,7 @@ char	**ft_split(char const *s, char c)
 	w_size = 0;
 	return_mtx = (char **) ft_calloc(ft_word_count(s, c), sizeof(char *));
 	if (!return_mtx)
-		return (ft_free(return_mtx));
+		return (ft_free_mtx(return_mtx));
 	while (s[index] != '\0')
 	{
 		if (s[index] == c)

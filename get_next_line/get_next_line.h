@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:15:01 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/10 23:00:01 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:09:35 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_get_return(char	**read_memory);
-char	*ft_read_buff(char **read_memory, int fd);
+size_t	ft_strlen(char *s);
+char	*ft_free(char *str);
+char	*ft_strjoinevo(char *s1, char *s2, int f1 , int f2);
+char	*ft_strchr(char *s, int c);
+char	*ft_get_return(char	*full_str);
+char	*ft_read_buff(char *old_j_str, int fd);
 char	*get_next_line(int fd);
 
 #endif

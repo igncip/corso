@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strjoinevo(char const *s1, char const *s2, int f1 , int f2)
+char	*ft_strjoinevo(char const *s1, char const *s2, int f1, int f2)
 {
 	int			index;
 	char		*dst;
@@ -22,7 +22,7 @@ char	*ft_strjoinevo(char const *s1, char const *s2, int f1 , int f2)
 	s1_cpy = s1;
 	s2_cpy = s2;
 	dst = (char *) ft_calloc(((ft_strlen(s1_cpy) + ft_strlen(s2_cpy)) + 1),
-		sizeof (char));
+			sizeof (char));
 	if (!dst)
 		return (ft_free(dst));
 	index = 0;

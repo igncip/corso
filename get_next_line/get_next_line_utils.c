@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:14:52 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/15 20:38:58 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/15 21:10:03 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (ptr);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	lenght;
 
@@ -49,7 +49,7 @@ size_t	ft_strlen(const char *s)
 	return (lenght);
 }
 
-char	*ft_free(char const *str)
+char	*ft_free(char *str)
 {
 	if (str)
 	{
@@ -61,10 +61,10 @@ char	*ft_free(char const *str)
 
 char	*ft_strjoinevo(char *s1, char *s2, int f1 , int f2)
 {
-	int			index;
-	char		*dst;
-	char const	*s1_cpy;
-	char const	*s2_cpy;
+	int		index;
+	char	*dst;
+	char	*s1_cpy;
+	char	*s2_cpy;
 
 	s1_cpy = s1;
 	s2_cpy = s2;

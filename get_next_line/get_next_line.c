@@ -6,13 +6,13 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:15:11 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/15 20:38:53 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:10:23 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int		index;
 	char	c_conv;
@@ -37,7 +37,6 @@ char	*ft_get_return(char	*full_str)
 	int		index;
 	char	*return_str;
 
-	return_str = ft_free(return_str);
 	index = 0;
 	if (!full_str)
 		return (NULL);
@@ -54,13 +53,13 @@ char	*ft_get_return(char	*full_str)
 	return (return_str);
 }
 
-char	*ft_read_buff(char old_j_str, int fd)
+char	*ft_read_buff(char *old_j_str, int fd)
 {
 	char	*j_str;
 	char	*new_r_buf;
 	int		r_num;
 
-	j_str = ft_free(j_str);
+	r_num = 1;
 	new_r_buf = (char *) ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!new_r_buf)
 		return (new_r_buf = ft_free (new_r_buf));
@@ -69,7 +68,6 @@ char	*ft_read_buff(char old_j_str, int fd)
 	else
 	{
 		j_str = old_j_str;
-		r_num = 1;
 		while ((ft_strchr(j_str, '\n')) && r_num > 0)
 		{
 			r_num = read(fd, new_r_buf, BUFFER_SIZE);
@@ -107,8 +105,7 @@ char	*get_next_line(int fd)
 	return (return_str);
 }
 
-
-/*TEST SECTION*/
+/*TEST SECTION
 #include <unistd.h>
 
 int	main(void)
@@ -140,3 +137,4 @@ int	main(void)
 	// close(fd3);
 	return (0);
 }
+*/
