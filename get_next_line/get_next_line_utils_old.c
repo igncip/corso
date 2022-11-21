@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_old.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 18:14:52 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/21 22:35:43 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/21 22:14:18 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_free(char *str)
 	return (str);
 }
 
-char	*ft_strjoinevo(char *s1, char *s2, int fr)
+char	*ft_strjoinevo(char *s1, char *s2, int f1, int f2)
 {
 	int		index;
 	char	*dst;
@@ -82,12 +82,9 @@ char	*ft_strjoinevo(char *s1, char *s2, int fr)
 		dst[index++] = *s1_cpy++;
 	while (*s2_cpy)
 		dst[index++] = *s2_cpy++;
-	if (fr != 0)
-	{
+	if (f1 != 0)
 		s1_cpy = ft_free(s1_cpy);
+	if (f2 != 0)
 		s2_cpy = ft_free(s2_cpy);
-		s1 = ft_free(s1);
-		s2 = ft_free(s2);
-	}
 	return (dst);
 }
