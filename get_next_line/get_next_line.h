@@ -26,8 +26,8 @@
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-size_t	ft_strlcpy(char *dst, char *src, size_t size);
 size_t	ft_strlen(char *s);
+char	*ft_strlcpymod(char *src, size_t size);
 char	*ft_free(char *str);
 char	*ft_strjoinevo(char *s1, char *s2, int fr);
 char	*ft_strchr(char *s, int c);

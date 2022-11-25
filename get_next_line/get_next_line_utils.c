@@ -74,18 +74,22 @@ char	*ft_strjoinevo(char *s1, char *s2, int fr)
 	s1_cpy = s1;
 	s2_cpy = s2;
 	dst = (char *) ft_calloc(((ft_strlen(s1_cpy) + ft_strlen(s2_cpy)) + 1),
-			sizeof (char));
+		sizeof (char));
 	if (!dst)
 		return (ft_free(dst));
 	index = 0;
-	while (*s1_cpy)
-		dst[index++] = *s1_cpy++;
-	while (*s2_cpy)
-		dst[index++] = *s2_cpy++;
+	if (s1_cpy)
+	{
+		while (*s1_cpy != '\0')
+			dst[index++] = *s1_cpy++;
+	}
+	if (s2_cpy)
+	{
+		while (*s2_cpy)
+			dst[index++] = *s2_cpy++;
+	}
 	if (fr != 0)
 	{
-		s1_cpy = ft_free(s1_cpy);
-		s2_cpy = ft_free(s2_cpy);
 		s1 = ft_free(s1);
 		s2 = ft_free(s2);
 	}

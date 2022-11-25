@@ -32,20 +32,25 @@ char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlcpy(char *dst, char *src, size_t size)
+char	*ft_strlcpymod(char *src, size_t size)
 {
 	size_t	index;
+	char	*dst;
 
 	index = 0;
 	if (size == 0)
-		return (ft_strlen(src));
+		return (NULL);
+	if (ft_strlen(src) < size)
+		dst = ft_calloc((ft_strlen(src) + 1), sizeof(char));
+	else
+		dst = ft_calloc(size + 1, sizeof(char));
 	while (index < size - 1 && src[index] != '\0')
 	{
 		dst[index] = src[index];
 		index++;
 	}
 	dst[index] = '\0';
-	return (ft_strlen(src));
+	return (dst);
 }
 
 char	*ft_get_buff(char *old_str, int fd)
@@ -55,7 +60,7 @@ char	*ft_get_buff(char *old_str, int fd)
 	int		r_num;
 
 	join_str = NULL;
-	ft_strlcpy (join_str, old_str, ft_strlen(old_str));
+	join_str = ft_strlcpymod (old_str, ft_strlen(old_str));
 	old_str = ft_free(old_str);
 	r_buff = (char *)ft_calloc(BUFFER_SIZE, sizeof(char));
 	while (!ft_strchr(join_str, '\n'))
@@ -84,10 +89,10 @@ char	*ft_get_return(char	*full_str)
 	temp = ft_strchr(full_str, '\n');
 	if (!temp)
 	{
-		ft_strlcpy (return_str, full_str, ft_strlen(full_str));
+		return_str = ft_strlcpymod (full_str, ft_strlen(full_str));
 		return (return_str);
 	}
-	ft_strlcpy (return_str, temp, ft_strlen(temp));
+	return_str = ft_strlcpymod (temp, ft_strlen(temp));
 	ft_free(temp);
 	return (return_str);
 }
@@ -108,7 +113,7 @@ char	*get_next_line(int fd)
 	if (return_str == new_str)
 		old_str = NULL;
 	else
-		ft_strlcpy(old_str, (ft_strchr(new_str, '\n')),
+		old_str = ft_strlcpymod((ft_strchr(new_str, '\n')),
 			(ft_strlen(ft_strchr(new_str, '\n'))));
 	new_str = ft_free(new_str);
 	return (return_str);
@@ -145,5 +150,4 @@ int	main(void)
 	// close(fd2);
 	// close(fd3);
 	return (0);
-}/*
-*/
+}
