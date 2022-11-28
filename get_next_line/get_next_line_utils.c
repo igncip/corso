@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 18:14:52 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/21 22:35:43 by igncipri         ###   ########.fr       */
+/*   Created: 2021/08/16 10:12:58 by ajordan-          #+#    #+#             */
+/*   Updated: 2022/11/28 22:38:54 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,52 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (ptr);
 }
 
-size_t	ft_strlen(char *s)
+char	*ft_strchr(char *s, int c)
 {
-	size_t	lenght;
+	int	i;
 
-	lenght = 0;
+	i = 0;
 	if (!s)
 		return (0);
-	while (s[lenght] != '\0')
-		lenght++;
-	return (lenght);
+	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char) c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (0);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	size_t	index_1;
+	size_t	index_2;
+	char	*dst;
+
+	if (!s1)
+		s1 = (char *)ft_calloc(1, sizeof(char));
+	if (!s2)
+		s2 = (char *)ft_calloc(1, sizeof(char));
+	if (!s1 || !s2)
+	{
+		s1 = ft_free(s1);
+		return(s2 = ft_free(s2));
+	}
+	dst = ft_calloc(((ft_strlen(s1) + ft_strlen(s2)) + 1), sizeof(char));
+	if (!dst)
+		return (dst = ft_free(dst));
+	index_1 = -1;
+	index_2 = 0;
+	if (s1)
+		while (s1[++index_1] != '\0')
+			dst[index_1] = s1[index_1];
+	while (s2[index_2] != '\0')
+		dst[index_1++] = s2[index_2++];
+	dst[index_1] = '\0';
+	s1 = ft_free(s1);
+	return (dst);
 }
 
 char	*ft_free(char *str)
@@ -62,36 +98,4 @@ char	*ft_free(char *str)
 		str = NULL;
 	}
 	return (str);
-}
-
-char	*ft_strjoinevo(char *s1, char *s2, int fr)
-{
-	int		index;
-	char	*dst;
-	char	*s1_cpy;
-	char	*s2_cpy;
-
-	s1_cpy = s1;
-	s2_cpy = s2;
-	dst = (char *) ft_calloc(((ft_strlen(s1_cpy) + ft_strlen(s2_cpy)) + 1),
-		sizeof (char));
-	if (!dst)
-		return (ft_free(dst));
-	index = 0;
-	if (s1_cpy)
-	{
-		while (*s1_cpy != '\0')
-			dst[index++] = *s1_cpy++;
-	}
-	if (s2_cpy)
-	{
-		while (*s2_cpy)
-			dst[index++] = *s2_cpy++;
-	}
-	if (fr != 0)
-	{
-		s1 = ft_free(s1);
-		s2 = ft_free(s2);
-	}
-	return (dst);
 }

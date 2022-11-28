@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 10:12:14 by ajordan-          #+#    #+#             */
-/*   Updated: 2022/11/28 22:39:10 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/28 22:42:05 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ char	*ft_get_buff(int fd, char *origin)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*static_str;
+	static char	*static_str[4096];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	static_str = ft_get_buff(fd, static_str);
-	if (!static_str)
-		return (static_str = ft_free(static_str));
-	line = ft_get_return(static_str);
-	static_str = ft_new_static(static_str);
+	static_str[fd] = ft_get_buff(fd, static_str[fd]);
+	if (!static_str[fd])
+		return (static_str[fd] = ft_free(static_str[fd]));
+	line = ft_get_return(static_str[fd]);
+	static_str[fd] = ft_new_static(static_str[fd]);
 	return (line);
 }
