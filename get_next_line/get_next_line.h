@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 10:12:35 by ajordan-          #+#    #+#             */
-/*   Updated: 2022/11/28 22:36:04 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:33:50 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
+# include <unistd.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000

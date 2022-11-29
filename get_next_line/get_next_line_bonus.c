@@ -6,11 +6,11 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 10:12:14 by ajordan-          #+#    #+#             */
-/*   Updated: 2022/11/28 22:42:05 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:29:21 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *s)
 {

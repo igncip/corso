@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 10:12:58 by ajordan-          #+#    #+#             */
-/*   Updated: 2022/11/28 22:38:54 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:29:36 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_bzero(void *s, size_t n)
 {
@@ -71,10 +71,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s2)
 		s2 = (char *)ft_calloc(1, sizeof(char));
 	if (!s1 || !s2)
-	{
-		s1 = ft_free(s1);
-		return(s2 = ft_free(s2));
-	}
+		return (s1 = ft_free(s1));
 	dst = ft_calloc(((ft_strlen(s1) + ft_strlen(s2)) + 1), sizeof(char));
 	if (!dst)
 		return (dst = ft_free(dst));
