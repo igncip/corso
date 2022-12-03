@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 10:12:35 by ajordan-          #+#    #+#             */
-/*   Updated: 2022/11/29 18:35:23 by igncipri         ###   ########.fr       */
+/*   Created: 2022/12/03 21:24:32 by igncipri          #+#    #+#             */
+/*   Updated: 2022/12/03 21:24:33 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
@@ -17,11 +19,10 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
+#  define BUFFER_SIZE 42
 # endif
 
-void	ft_bzero(void *s, size_t n);
-void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);

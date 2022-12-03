@@ -5,23 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 10:12:58 by ajordan-          #+#    #+#             */
-/*   Updated: 2022/11/29 18:28:15 by igncipri         ###   ########.fr       */
+/*   Created: 2022/12/03 19:04:40 by igncipri          #+#    #+#             */
+/*   Updated: 2022/12/03 21:25:01 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	index;
 
 	index = 0;
 	while (index < n)
 	{
-		((char *)s)[index] = '\0';
+		((char *)s)[index] = ((char)c);
 		index++;
 	}
+	return (s);
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -38,7 +38,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ptr = (void *) malloc(nmemb * size);
 	if ((!ptr) || (nmemb <= 0) || (size <= 0))
 		return (NULL);
-	ft_bzero(ptr, (nmemb * size));
+	ft_memset(ptr, 0, (nmemb * size));
 	return (ptr);
 }
 

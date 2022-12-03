@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/16 10:12:14 by ajordan-          #+#    #+#             */
-/*   Updated: 2022/11/29 18:29:21 by igncipri         ###   ########.fr       */
+/*   Created: 2022/12/03 21:24:50 by igncipri          #+#    #+#             */
+/*   Updated: 2022/12/03 21:24:51 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "get_next_line_bonus.h"
 
@@ -87,7 +89,10 @@ char	*ft_get_buff(int fd, char *origin)
 	{
 		rd_bytes = read(fd, buff, BUFFER_SIZE);
 		if (rd_bytes == -1)
+		{
+			origin = ft_free(origin);
 			return (buff = ft_free(buff));
+		}
 		buff[rd_bytes] = '\0';
 		origin = ft_strjoin(origin, buff);
 	}
