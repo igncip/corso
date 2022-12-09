@@ -6,11 +6,9 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:24:32 by igncipri          #+#    #+#             */
-/*   Updated: 2022/12/03 21:24:33 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/12/09 13:06:55 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H

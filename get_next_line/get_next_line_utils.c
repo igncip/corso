@@ -6,10 +6,11 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:04:40 by igncipri          #+#    #+#             */
-/*   Updated: 2022/12/03 21:25:01 by igncipri         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:21:52 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {
