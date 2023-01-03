@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_utoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 22:53:33 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/03 22:17:58 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/03 22:18:11 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-size_t	ft_nbrleng(int n, char *base)
+size_t	ft_nbrleng(unsigned int n, char *base)
 {
 	size_t			index;
 	unsigned int	n_cpy;
@@ -23,13 +23,7 @@ size_t	ft_nbrleng(int n, char *base)
 	index = 0;
 	if (n == 0)
 		return (1);
-	if (n < 0)
-	{
-		n_cpy = n * -1;
-		index++;
-	}
-	else
-		n_cpy = n;
+	n_cpy = n;
 	while (n_cpy > 0)
 	{
 		n_cpy /= base_leng;
@@ -38,7 +32,7 @@ size_t	ft_nbrleng(int n, char *base)
 	return (index);
 }
 
-void	ft_conversion(char *dest, int n, char *base)
+void	ft_conversion(char *dest, unsigned int n, char *base)
 {
 	size_t			dest_leng;
 	unsigned int	n_cpy;
@@ -49,13 +43,7 @@ void	ft_conversion(char *dest, int n, char *base)
 	dest[dest_leng--] = '\0';
 	if (!n)
 		dest[dest_leng] = base[0];
-	if (n < 0)
-	{
-		dest[0] = '-';
-		n_cpy = n * -1;
-	}
-	else
-		n_cpy = n;
+	n_cpy = n;
 	while (n_cpy)
 	{
 		dest[dest_leng--] = base[n_cpy % base_leng];
@@ -63,7 +51,7 @@ void	ft_conversion(char *dest, int n, char *base)
 	}
 }
 
-char	*ft_itoa_base(int n, char *base)
+char	*ft_utoa_base(unsigned int n, char *base)
 {
 	char	*dest;
 

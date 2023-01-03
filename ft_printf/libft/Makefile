@@ -6,7 +6,7 @@
 #    By: igncipri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 21:27:51 by igncipri          #+#    #+#              #
-#    Updated: 2022/10/08 21:27:54 by igncipri         ###   ########.fr        #
+#    Updated: 2023/01/03 22:10:27 by igncipri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 
 NAME = libft.a
 BONUS = bonus
+MY = my
 
 ###### VARIABLE ######
 
@@ -67,6 +68,18 @@ BONUSSOURCE =	ft_lstnew.c \
 
 BONUSOBJECT = ${BONUSSOURCE:.c=.o}
 
+MYSOURCE =	ft_free.c \
+			ft_strjoinevo.c \
+			ft_strlcpyevo.c \
+			ft_itoa_base.c \
+			ft_utoa.c \
+			ft_utoa_HEX.c \
+			ft_utoa_hex.c \
+			ft_utoa_base.c \
+			ft_ptrtoa.c
+
+MYOBJECT = ${MYSOURCE:.c=.o}
+
 COMPILERCOMMAND = gcc
 ARGUMENTS = ar
 REMOVECOMMAND = rm -f
@@ -97,9 +110,14 @@ ${BONUS}: ${BONUSOBJECT}
 	${ARGUMENTS} -rcs ${NAME} ${BONUSOBJECT}
 	@echo ""
 
+${MY}: ${MYOBJECT}
+	@echo "===++== ADD MY IN ARCHIVE ==++==="
+	${ARGUMENTS} -rcs ${NAME} ${MYOBJECT}
+	@echo ""
+
 clean:
 	@echo "====++=== CLEAN ALL OBJECTS ===++==="
-	${REMOVECOMMAND} ${OBJECTS} ${BONUSOBJECT}
+	${REMOVECOMMAND} ${OBJECTS} ${BONUSOBJECT} ${MYOBJECT}
 	@echo ""
 
 fclean: clean

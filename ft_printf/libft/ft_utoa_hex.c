@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_utoa_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 19:07:54 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/03 23:22:54 by igncipri         ###   ########.fr       */
+/*   Created: 2022/10/14 20:44:12 by igncipri          #+#    #+#             */
+/*   Updated: 2023/01/03 21:23:26 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-size_t	ft_strlen(const char *s)
+char	*ft_utoa_hex(unsigned int n)
 {
-	size_t	lenght;
-
-	lenght = 0;
-	while (s[lenght] != '\0')
-		lenght++;
-	return (lenght);
+	return (ft_utoa_base (n, "0123456789abcdef"));
 }

@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_hex.c                                      :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 20:44:12 by igncipri          #+#    #+#             */
-/*   Updated: 2022/12/13 23:00:45 by igncipri         ###   ########.fr       */
+/*   Created: 2022/12/13 22:53:33 by igncipri          #+#    #+#             */
+/*   Updated: 2023/01/03 21:23:19 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-
-
-char	*ft_itoa_hex(int n)
+char	*ft_utoa(unsigned int n)
 {
-	return (ft_itoa_base (n, "01234567890abcdef"));
+	return (ft_utoa_base (n, "0123456789"));
 }

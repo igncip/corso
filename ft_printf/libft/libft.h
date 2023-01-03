@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 18:25:12 by igncipri          #+#    #+#             */
-/*   Updated: 2022/12/13 23:02:27 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/03 22:11:51 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+#include <stdint.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -53,10 +54,6 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-char	*ft_free(char *str);
-char	*ft_strjoinevo(char const *s1, char const *s2, int f1, int f2);
-size_t	ft_strlcpyevo(char *dst, const char *src, size_t size, int f1);
-
 typedef struct s_list
 {
 	void			*content;
@@ -73,8 +70,15 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+char	*ft_free(char *str);
+char	*ft_strjoinevo(char const *s1, char const *s2, int f1, int f2);
+size_t	ft_strlcpyevo(char *dst, const char *src, size_t size, int f1);
 char	*ft_itoa_base(int n, char *base);
-char	*ft_itoa_hex(int n);
-char	*ft_itoa_HEX(int n);
+char	*ft_utoa(unsigned int n);
+char	*ft_utoa_HEX(unsigned int n);
+char	*ft_utoa_hex(unsigned int n);
+char	*ft_utoa_base(unsigned int n, char *base);
+char	*ft_utoa_HEX(uintptr_t ptr);
+char	*ft_ptrtoa(uintptr_t n);
 
 #endif
