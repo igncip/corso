@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 22:55:17 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/03 23:31:42 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:59:51 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 
 /*               **********---TO DO---**********
--aggiungere lo zainetto nella dichiarazione di print char e print str
+-aggiungere lo zainetto nelle dichiarazioni
 -creare lo zainetto in printf.h
 -aggiungere la funzione di riempimento dello zainetto
 -fare il free dello zainetto dopo la stampa
@@ -25,20 +25,20 @@ int	ft_formats(va_list args, const char format)
 {
 	int	print_length;
 
-	print_length = 0;
-	if (format == 'c')//char
-		print_length += ft_printchar(va_arg(args, int));
-	else if (format == 's')//string
-		print_length += ft_printstr(va_arg(args, char *));
-	else if (format == 'p')//pointer
-		print_length += ft_print_ptr(va_arg(args, uintptr_t));
-	else if (format == 'd' || format == 'i')//integer
-		print_length += ft_printnbr(va_arg(args, int));
-	else if (format == 'u')//unsigned number
-		print_length += ft_print_unsigned(va_arg(args, unsigned int));
-	else if (format == 'x' || format == 'X')//hexadecimal
-		print_length += ft_print_hex(va_arg(args, unsigned int), format);
-	else if (format == '%')//percentual
+	print_length
+	if (bag->format == 'c')//char
+		print_length += ft_printchar(va_arg(args, int), bag)
+	else if (bag->format == 's')//string
+		print_length += ft_printstr(va_arg(args, char *), bag)
+	else if (bag->format == 'p')//pointer
+		print_length += ft_print_ptr(va_arg(args, uintptr_t), bag)
+	else if (bag->format == 'd' || bag->format == 'i')//integer
+		print_length += ft_printnbr(va_arg(args, int), bag)
+	else if (bag->format == 'u')//unsigned number
+		print_length += ft_print_unsigned(va_arg(args, unsigned int), bag)
+	else if (bag->format == 'x' || bag->format == 'X')//hexadecimal
+		print_length += ft_print_hex(va_arg(args, unsigned int), bag);
+	else if (bag->format == '%')//percentual
 		print_length += ft_printpercent();
 	return (print_length);
 }
@@ -48,63 +48,62 @@ int	ft_printf(const char *str, ...)
 	int		i;
 	va_list	args;
 	int		print_length;
-	int		format_index;
 
 	i = 0;
-	print_length = 0;
+	//create-bag
 	va_start(args, str);
-	while (str[i])
+	while (str[bag->index])
 	{
-		if (str[i] == '%')
+		if (str[bag->index] == '%')
 		{
-			format_index = ft_bag_packer(bag, str[i + 1])
-			print_length += ft_formats(args, str[format_index]);
-			i = format_index + 1;
+			ft_bag_packer(bag);//initialize bag with the flags and momentary p_leng
+			print_length += ft_formats(bag, args);
+			ft_empty_bag(bag);//clean the flags and update the index to form_buff
 		}
 		else
-			print_length += ft_printchar(str[i]);
-		i++;
+			print_length += ft_print(str[i]);
+		bag->index++;
 	}
 	va_end(args);
+	//free bag
 	return (print_length);
 }
 
 //UTILS
-int	ft_printchar(int c)//char
+int	ft_print(char	c)//char
 {
-	if(bag->width >= 1)
-		ft_width(bag->width, 1);
 	write(1, &c, 1);
-	if(bag->minus >= 1)
-		ft_width(bag->minus, 1);
 	return (1);
 }
 
-int	ft_printstr(str)//string
+int	ft_printchar(struct bag)//char
+{
+	int	print_length;
+	ft_berfore_print(bag);
+	write(1, &c, 1);
+	bag->p_leng += 1;
+	ft_after_print(bag);
+	return (bag->p_leng);
+}
+
+int	ft_printstr(struct bag)//string
 {
 	int		index;
 
 	index = 0
-	if(bag->width >= 1)
+	if (bag->print_str == NULL)
 	{
-		if(!str)
-			ft_width(bag->width, 6);
-		else
-			ft_width(bag->width, ft_strlen(str));
+		bag->print_str = "(null)";
 	}
-	if (str == NULL)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
+	ft_berfore_print(bag);
 	while (str[index] != '\n')
 	{
-		write(1, &str[index], 1);
+		write(1, &bag->print_str[index], 1);
 		index++
 	}
-	if(bag->minus >= 1)
-		ft_width(bag->minus, index);
-	return (index);
+	bag->p_leng += index;
+	ft_after_print(bag);
+	return (bag->p_leng);
 }
 
 int	ft_print_ptr(uintptr_t ptr)//pointer
@@ -112,8 +111,7 @@ int	ft_print_ptr(uintptr_t ptr)//pointer
 	char	*dest;
 	int		print_length;
 
-	dest = ft_ptrt
-	oa(ptr);
+	dest = ft_ptrtoa(ptr);
 	print_length = ft_printstr(dest);
 	ft_free(dest);
 	return (print_length);
@@ -146,7 +144,7 @@ int	ft_print_hex(unsigned int hex_nbr, format)//hexadecimal
 	char	*dest;
 	int		print_length;
 
-	if(format == "x")
+	if(bag->format == "x")
 		dest = ft_itoa_hex(hex_nbr);
 	else
 		dest = ft_itoa_HEX(hex_nbr);
@@ -162,7 +160,7 @@ int	ft_printpercent()//percent
 }
 
 //flags
-ft_width(int n_char, int to_print)
+ft_width(int n_char, int to_print)// W 
 {
 	int	index;
 
@@ -174,7 +172,7 @@ ft_width(int n_char, int to_print)
 	}
 }
 
-ft_minus(int n_char, int printed)
+ft_minus(int n_char, int printed)// minus
 {
 	int	index;
 
@@ -184,4 +182,26 @@ ft_minus(int n_char, int printed)
 		write(1, ' ', 1);//controllare se vuole "spazi" o "0"
 		index++;
 	}
+}
+
+//flag print elaboration
+void	ft_berfore_print(struct bag)
+{
+	peni;
+}
+
+void	ft_after_print(struct bag)
+{
+	peni;
+}
+
+//BAG ELABORATION
+void	ft_bag_packer(struct bag)
+{
+	peni;
+}
+
+void	ft_empty_bag(struct bag)
+{
+	peni;
 }
