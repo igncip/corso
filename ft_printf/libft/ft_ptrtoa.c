@@ -6,12 +6,11 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 22:53:33 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/03 22:15:59 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:03:16 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 size_t	ft_nbrleng(uintptr_t n, char *base)
 {
@@ -51,15 +50,15 @@ void	ft_conversion(char *dest, uintptr_t n, char *base)
 	}
 }
 
-char	*ft_ptrtoa(uintptr_t n)
+char	*ft_ptrtoa(uintptr_t ptr)
 {
 	char	*dest;
 	char	*base;
 
 	base = "0123456789abcdef";
-	dest = (char *) ft_calloc((ft_nbrleng(n, base) + 1), (sizeof(char)));
+	dest = (char *) ft_calloc((ft_nbrleng(ptr, base) + 1), (sizeof(char)));
 	if (!dest)
 		return (NULL);
-	ft_conversion(dest, n, base);
+	ft_conversion(dest, ptr, base);
 	return (dest);
 }

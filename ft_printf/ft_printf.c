@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 22:55:17 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/08 19:59:10 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:48:46 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ int	ft_formats(va_list args, const char format)
 	int	print_length;
 
 	print_length = 0;
-	if (format == 'c')//char
+	if (format == 'c')
 		print_length += ft_printchar(va_arg(args, int));
-	else if (format == 's')//string
+	else if (format == 's')
 		print_length += ft_printstr(va_arg(args, char *));
-	else if (format == 'p')//pointer
+	else if (format == 'p')
 		print_length += ft_print_ptr(va_arg(args, uintptr_t));
-	else if (format == 'd' || format == 'i')//integer
+	else if (format == 'd' || format == 'i')
 		print_length += ft_printnbr(va_arg(args, int));
-	else if (format == 'u')//unsigned number
+	else if (format == 'u')
 		print_length += ft_print_unsigned(va_arg(args, unsigned int));
-	else if (format == 'x' || format == 'X')//hexadecimal
+	else if (format == 'x' || format == 'X')
 		print_length += ft_print_hex(va_arg(args, unsigned int), format);
-	else if (format == '%')//percentual
-		print_length += ft_printpercent();
+	else if (format == '%')
+		print_length += ft_printpercent(format);
 	return (print_length);
 }
 
@@ -43,6 +43,7 @@ int	ft_printf(const char *str, ...)
 
 	i = 0;
 	print_length = 0;
+	format_index = 0;
 	va_start(args, str);
 	while (str[i])
 	{

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utoa_HEX.c                                      :+:      :+:    :+:   */
+/*   ft_utohex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 20:44:12 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/03 21:23:25 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:43:12 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_utoa_HEX(unsigned int n)
+char	*ft_utohex(unsigned int n)
 {
-	return (ft_utoa_base (n, "0123456789ABCDEF"));
+	return (ft_utoa_base (n, "0123456789abcdef"));
 }

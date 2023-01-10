@@ -6,7 +6,7 @@
 #    By: igncipri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 21:27:51 by igncipri          #+#    #+#              #
-#    Updated: 2023/01/03 22:10:27 by igncipri         ###   ########.fr        #
+#    Updated: 2023/01/10 23:04:54 by igncipri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ MYSOURCE =	ft_free.c \
 MYOBJECT = ${MYSOURCE:.c=.o}
 
 COMPILERCOMMAND = gcc
-ARGUMENTS = ar
+ARGUMENTS = ar -rsv
 REMOVECOMMAND = rm -f
 COMPILERFLAGS = -Wall -Wextra -Werror
 
@@ -102,17 +102,17 @@ all: ${NAME}
 
 ${NAME}: ${OBJECTS}
 	@echo "===++== CREATE/UPDATE ARCHIVE ==++=="
-	${ARGUMENTS} -rcs ${NAME} ${OBJECTS}
+	${ARGUMENTS} ${NAME} ${OBJECTS}
 	@echo ""
 
 ${BONUS}: ${BONUSOBJECT}
 	@echo "===++== ADD BONUS IN ARCHIVE ==++==="
-	${ARGUMENTS} -rcs ${NAME} ${BONUSOBJECT}
+	${ARGUMENTS} ${NAME} ${BONUSOBJECT}
 	@echo ""
 
 ${MY}: ${MYOBJECT}
 	@echo "===++== ADD MY IN ARCHIVE ==++==="
-	${ARGUMENTS} -rcs ${NAME} ${MYOBJECT}
+	${ARGUMENTS} ${NAME} ${MYOBJECT}
 	@echo ""
 
 clean:

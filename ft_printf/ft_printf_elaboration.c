@@ -6,13 +6,14 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 19:54:21 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/08 19:58:44 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:54:51 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
-int	ft_print_ptr(uintptr_t ptr)//pointer
+int	ft_print_ptr(uintptr_t ptr)
 {
 	char	*dest;
 	int		print_length;
@@ -23,7 +24,7 @@ int	ft_print_ptr(uintptr_t ptr)//pointer
 	return (print_length);
 }
 
-int	ft_printnbr(int number)//integer
+int	ft_printnbr(int number)
 {
 	char	*dest;
 	int		print_length;
@@ -34,7 +35,7 @@ int	ft_printnbr(int number)//integer
 	return (print_length);
 }
 
-int	ft_print_unsigned(unsigned int unsign_nbr)//unsigned
+int	ft_print_unsigned(unsigned int unsign_nbr)
 {
 	char	*dest;
 	int		print_length;
@@ -45,22 +46,25 @@ int	ft_print_unsigned(unsigned int unsign_nbr)//unsigned
 	return (print_length);
 }
 
-int	ft_print_hex(unsigned int hex_nbr, format)//hexadecimal
+int	ft_print_hex(unsigned int hex_nbr, const char format)
 {
 	char	*dest;
 	int		print_length;
 
-	if(format == "x")
-		dest = ft_itoa_hex(hex_nbr);
+	if (format == 'x')
+		dest = ft_utohex(hex_nbr);
 	else
-		dest = ft_itoa_HEX(hex_nbr);
+		dest = ft_utohex_up(hex_nbr);
 	print_length = ft_printstr(dest);
 	ft_free(dest);
 	return (print_length);
 }
 
-int	ft_printpercent()//percent
+int	ft_printpercent(const char format)
 {
-	write(1, '%', 1);
+	if (format == '%')
+		write(1, "%", 1);
+	else
+		write(1, "%", 1);
 	return (1);
 }
