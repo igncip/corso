@@ -6,14 +6,14 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 22:53:33 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/03 22:17:58 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:06:37 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-size_t	ft_nbrleng(int n, char *base)
+size_t	ft_nbrleng(int n, const char *base)
 {
 	size_t			index;
 	unsigned int	n_cpy;
@@ -38,7 +38,7 @@ size_t	ft_nbrleng(int n, char *base)
 	return (index);
 }
 
-void	ft_conversion(char *dest, int n, char *base)
+void	ft_conversion(char *dest, int n, const char *base)
 {
 	size_t			dest_leng;
 	unsigned int	n_cpy;
@@ -63,7 +63,7 @@ void	ft_conversion(char *dest, int n, char *base)
 	}
 }
 
-char	*ft_itoa_base(int n, char *base)
+char	*ft_itoa_base(int n, const char *base)
 {
 	char	*dest;
 

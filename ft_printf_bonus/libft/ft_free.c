@@ -6,18 +6,18 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:09:06 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/15 21:09:18 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:28:44 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_free(char *str)
+char	*ft_free(char **str)
 {
-	if (str)
+	if (*str)
 	{
-		free(str);
+		free(*str);
 		str = NULL;
 	}
-	return (str);
+	return (*str);
 }

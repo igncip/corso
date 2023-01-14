@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpyevo.c                                    :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 19:07:42 by igncipri          #+#    #+#             */
-/*   Updated: 2022/11/15 19:17:23 by igncipri         ###   ########.fr       */
+/*   Created: 2022/11/15 18:09:06 by igncipri          #+#    #+#             */
+/*   Updated: 2023/01/14 17:55:55 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlcpyevo(char *dst, const char *src, size_t size, int f1)
+char	*ft_free(char **str)
 {
-	size_t	index;
-	size_t	len;
-
-	index = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (index < size - 1 && src[index] != '\0')
+	if (*str)
 	{
-		dst[index] = src[index];
-		index++;
+		free(*str);
+		str = NULL;
 	}
-	dst[index] = '\0';
-	len = ft_strlen(src);
-	if (f1 != 0)
-		src = ft_free(src);
-	return (len);
+	return (*str);
 }

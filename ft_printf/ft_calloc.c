@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 20:46:50 by igncipri          #+#    #+#             */
-/*   Updated: 2022/10/14 20:46:51 by igncipri         ###   ########.fr       */
+/*   Created: 2022/10/10 18:36:18 by igncipri          #+#    #+#             */
+/*   Updated: 2023/01/14 17:55:59 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_list	*lst_cpy;
+	void	*ptr;
 
-	lst_cpy = lst;
-	if (lst_cpy == NULL)
-		return (lst_cpy);
-	while (lst_cpy->next != NULL)
-		lst_cpy = lst_cpy->next;
-	return (lst_cpy);
+	if (nmemb >= __SIZE_MAX__ || size >= __SIZE_MAX__)
+		return (NULL);
+	if (!nmemb || !size)
+	{
+		nmemb = 1;
+		size = 1;
+	}
+	ptr = (void *) malloc(nmemb * size);
+	if ((!ptr) || (nmemb <= 0) || (size <= 0))
+		return (NULL);
+	ft_memset(ptr, '\0', (nmemb * size));
+	return (ptr);
 }

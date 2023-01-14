@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 18:55:29 by igncipri          #+#    #+#             */
-/*   Updated: 2022/10/30 14:46:02 by igncipri         ###   ########.fr       */
+/*   Created: 2023/01/14 18:35:52 by igncipri          #+#    #+#             */
+/*   Updated: 2023/01/14 19:22:08 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
+#include <stdio.h>
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int main(void)
 {
-	size_t			index;
-	unsigned char	*s1_conv;
-	unsigned char	*s2_conv;
-
-	s1_conv = ((unsigned char *)s1);
-	s2_conv = ((unsigned char *)s2);
-	index = 0;
-	while (index < n)
-	{
-		if (s1_conv[index] != s2_conv[index])
-			return (s1_conv[index] - s2_conv[index]);
-		index++;
-	}
+	ft_printf("ciao %s\n", "stringa");
+	printf("ciao %s\n", "stringa");
 	return (0);
 }

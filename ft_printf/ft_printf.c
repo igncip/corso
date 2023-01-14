@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 22:55:17 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/10 22:48:46 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/14 19:18:45 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,23 @@ int	ft_formats(va_list args, const char format)
 
 int	ft_printf(const char *str, ...)
 {
-	int		i;
+	int		index;
 	va_list	args;
 	int		print_length;
-	int		format_index;
 
-	i = 0;
+	index = 0;
 	print_length = 0;
-	format_index = 0;
 	va_start(args, str);
-	while (str[i])
+	while (str[index])
 	{
-		if (str[i] == '%')
+		if (str[index] == '%')
 		{
-			print_length += ft_formats(args, str[format_index]);
-			i = format_index + 1;
+			print_length += ft_formats(args, str[index + 1]);
+			index ++;
 		}
 		else
-			print_length += ft_printchar(str[i]);
-		i++;
+			print_length += ft_printchar(str[index]);
+		index++;
 	}
 	va_end(args);
 	return (print_length);

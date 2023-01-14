@@ -6,7 +6,7 @@
 #    By: igncipri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/08 21:27:51 by igncipri          #+#    #+#              #
-#    Updated: 2023/01/03 22:10:27 by igncipri         ###   ########.fr        #
+#    Updated: 2023/01/14 14:58:24 by igncipri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,17 +73,17 @@ MYSOURCE =	ft_free.c \
 			ft_strlcpyevo.c \
 			ft_itoa_base.c \
 			ft_utoa.c \
-			ft_utoa_HEX.c \
-			ft_utoa_hex.c \
+			ft_utohex_up.c \
+			ft_utohex.c \
 			ft_utoa_base.c \
 			ft_ptrtoa.c
 
 MYOBJECT = ${MYSOURCE:.c=.o}
 
-COMPILERCOMMAND = gcc
-ARGUMENTS = ar
+CC = gcc
+AR = ar -rsv
 REMOVECOMMAND = rm -f
-COMPILERFLAGS = -Wall -Wextra -Werror
+CFALGS = -Wall -Wextra -Werror
 
 ######## EXT #########
 
@@ -94,25 +94,25 @@ COMPILERFLAGS = -Wall -Wextra -Werror
 # .inextention.outextention:
 
 .c.o:
-	${COMPILERCOMMAND} ${COMPILERFLAGS} -c $< -o $@
+	${CC} ${CFALGS} -c $< -o $@
 
 ####### RULES ########
 
 all: ${NAME}
 
-${NAME}: ${OBJECTS}
+${NAME}: ${OBJECTS} ${BONUS} ${MY}
 	@echo "===++== CREATE/UPDATE ARCHIVE ==++=="
-	${ARGUMENTS} -rcs ${NAME} ${OBJECTS}
+	${AR} ${NAME} ${OBJECTS}
 	@echo ""
 
 ${BONUS}: ${BONUSOBJECT}
 	@echo "===++== ADD BONUS IN ARCHIVE ==++==="
-	${ARGUMENTS} -rcs ${NAME} ${BONUSOBJECT}
+	${AR} ${NAME} ${BONUSOBJECT}
 	@echo ""
 
 ${MY}: ${MYOBJECT}
 	@echo "===++== ADD MY IN ARCHIVE ==++==="
-	${ARGUMENTS} -rcs ${NAME} ${MYOBJECT}
+	${AR} ${NAME} ${MYOBJECT}
 	@echo ""
 
 clean:
@@ -129,13 +129,13 @@ fclean: clean
 re: fclean all
 
 #debug: ${OBJECTS}
-#	@${COMPILERCOMMAND} ${COMPILERFLAGS} ${OBJECTS} -o ${NAME} -g
+#	@${CC} ${CFALGS} ${OBJECTS} -o ${NAME} -g
 #	lldb ${NAME}
 #
 #	ar -crs ${NAME} ${OBJECTS}
 
 #.c.o:
-#	@${COMPILERCOMMAND} ${COMPILERFLAGS} -c $< -o ${<:.c=.o}
+#	@${CC} ${CFALGS} -c $< -o ${<:.c=.o}
 
 .PHONY: all clean fclean re .c.o debug marchive
 .SUFFIXES: .c .o 

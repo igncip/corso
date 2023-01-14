@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptrtoa.c                                        :+:      :+:    :+:   */
+/*   ft_utoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 22:53:33 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/10 22:03:16 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:05:45 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_nbrleng(uintptr_t n, char *base)
+size_t	ft_uleng(unsigned int n, const char *base)
 {
-	size_t		index;
-	uintptr_t	n_cpy;
-	size_t		base_leng;
+	size_t			index;
+	unsigned int	n_cpy;
+	size_t			base_leng;
 
 	base_leng = ft_strlen(base);
 	index = 0;
@@ -31,14 +31,14 @@ size_t	ft_nbrleng(uintptr_t n, char *base)
 	return (index);
 }
 
-void	ft_conversion(char *dest, uintptr_t n, char *base)
+void	ft_conv(char *dest, unsigned int n, const char *base)
 {
-	size_t		dest_leng;
-	uintptr_t	n_cpy;
-	size_t		base_leng;
+	size_t			dest_leng;
+	unsigned int	n_cpy;
+	size_t			base_leng;
 
 	base_leng = ft_strlen(base);
-	dest_leng = ft_nbrleng(n, base);
+	dest_leng = ft_uleng(n, base);
 	dest[dest_leng--] = '\0';
 	if (!n)
 		dest[dest_leng] = base[0];
@@ -50,15 +50,15 @@ void	ft_conversion(char *dest, uintptr_t n, char *base)
 	}
 }
 
-char	*ft_ptrtoa(uintptr_t ptr)
+char	*ft_utoa_base(unsigned int n, const char *base)
 {
 	char	*dest;
-	char	*base;
 
-	base = "0123456789abcdef";
-	dest = (char *) ft_calloc((ft_nbrleng(ptr, base) + 1), (sizeof(char)));
+	if (!base)
+		return (NULL);
+	dest = (char *) ft_calloc((ft_uleng(n, base) + 1), (sizeof(char)));
 	if (!dest)
 		return (NULL);
-	ft_conversion(dest, ptr, base);
+	ft_conv(dest, n, base);
 	return (dest);
 }
