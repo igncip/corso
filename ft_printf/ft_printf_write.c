@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 19:58:34 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/10 22:51:00 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/22 16:58:52 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_printstr(char *str)
 		write(1, "(null)", 6);
 		return (6);
 	}
-	while (str[index] != '\n')
+	while (str[index] != '\0')
 	{
 		write(1, &str[index], 1);
 		index++;

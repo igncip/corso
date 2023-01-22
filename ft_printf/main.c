@@ -5,17 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 18:35:52 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/14 19:22:08 by igncipri         ###   ########.fr       */
+/*   Created: 2023/01/22 16:50:01 by igncipri          #+#    #+#             */
+/*   Updated: 2023/01/22 17:53:15 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
-#include <stdio.h>
+#include<stdio.h>
+#include "ft_printf.h"
 
-int main(void)
+int	main(void)
 {
-	ft_printf("ciao %s\n", "stringa");
-	printf("ciao %s\n", "stringa");
+	void	*x;
+
+	x = "0";
+	printf("ciao %p\n", x);
+	ft_printf("ciao %p\n", x);
 	return (0);
 }

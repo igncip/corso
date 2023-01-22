@@ -6,7 +6,7 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 22:53:33 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/14 18:06:42 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:52:54 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ size_t	ft_ptrleng(uintptr_t n, char *base)
 	size_t		base_leng;
 
 	base_leng = ft_strlen(base);
-	index = 0;
+	if (!n)
+		return (4);
 	if (n == 0)
-		return (1);
+		return (3);
+	index = 2;
 	n_cpy = n;
 	while (n_cpy > 0)
 	{
@@ -39,9 +41,9 @@ void	ft_conve(char *dest, uintptr_t n, char *base)
 
 	base_leng = ft_strlen(base);
 	dest_leng = ft_ptrleng(n, base);
+	dest[0] = '0';
+	dest[1] = 'x';
 	dest[dest_leng--] = '\0';
-	if (!n)
-		dest[dest_leng] = base[0];
 	n_cpy = n;
 	while (n_cpy)
 	{
@@ -56,9 +58,12 @@ char	*ft_ptrtoa(uintptr_t ptr)
 	char	*base;
 
 	base = "0123456789abcdef";
-	dest = (char *) ft_calloc((ft_ptrleng(ptr, base) + 1), (sizeof(char)));
+	dest = (char *) ft_calloc((ft_ptrleng(ptr, base)), (sizeof(char)));
 	if (!dest)
 		return (NULL);
-	ft_conve(dest, ptr, base);
+	if (ptr)
+		ft_conve(dest, ptr, base);
+	else
+	dest = "(nil)";
 	return (dest);
 }

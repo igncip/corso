@@ -6,18 +6,18 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:09:06 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/14 17:55:55 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:36:28 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_free(char **str)
+char	*ft_free(char **s)
 {
-	if (*str)
+	if (*s == 0)
 	{
-		free(*str);
-		str = NULL;
+		free(*s);
+		*s = NULL;
 	}
-	return (*str);
+	return (*s);
 }
