@@ -6,11 +6,13 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 22:53:33 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/22 17:52:54 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/24 21:28:20 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+//Non elabora "prt == 0" va gestito a monte della funzione
 
 size_t	ft_ptrleng(uintptr_t n, char *base)
 {
@@ -19,10 +21,6 @@ size_t	ft_ptrleng(uintptr_t n, char *base)
 	size_t		base_leng;
 
 	base_leng = ft_strlen(base);
-	if (!n)
-		return (4);
-	if (n == 0)
-		return (3);
 	index = 2;
 	n_cpy = n;
 	while (n_cpy > 0)
@@ -40,10 +38,9 @@ void	ft_conve(char *dest, uintptr_t n, char *base)
 	size_t		base_leng;
 
 	base_leng = ft_strlen(base);
-	dest_leng = ft_ptrleng(n, base);
+	dest_leng = ft_ptrleng(n, base) - 1;
 	dest[0] = '0';
 	dest[1] = 'x';
-	dest[dest_leng--] = '\0';
 	n_cpy = n;
 	while (n_cpy)
 	{
@@ -58,12 +55,9 @@ char	*ft_ptrtoa(uintptr_t ptr)
 	char	*base;
 
 	base = "0123456789abcdef";
-	dest = (char *) ft_calloc((ft_ptrleng(ptr, base)), (sizeof(char)));
+	dest = (char *) ft_calloc((ft_ptrleng(ptr, base) + 1), (sizeof(char)));
 	if (!dest)
 		return (NULL);
-	if (ptr)
-		ft_conve(dest, ptr, base);
-	else
-	dest = "(nil)";
+	ft_conve(dest, ptr, base);
 	return (dest);
 }
