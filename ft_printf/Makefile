@@ -6,7 +6,7 @@
 #    By: igncipri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 16:40:17 by gcavanna          #+#    #+#              #
-#    Updated: 2023/01/24 21:29:26 by igncipri         ###   ########.fr        #
+#    Updated: 2023/01/27 19:58:30 by igncipri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC		=	ft_calloc.c \
 OBJ		=	$(SRC:.c=.o)
 
 NAME	=	libftprintf.a
-CC		=	gcc
+CC		=	cc
 CFLAGS	=	-Wall -Werror -Wextra
 
 all:		$(NAME)
