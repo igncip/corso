@@ -1,10 +1,10 @@
-#Print the number of commands executed with the sudo program
+#Print the architecture of your operating system and its kernel version
 arc=$(uname -a)
 
-#Print the architecture of your operating system and its kernel version
-
+#Print the number of physical processors
 pcpu=$(grep "physical id" /proc/cpuinfo | sort | uniq | wc -l)
-#print the number of virtual processors
+
+#Print the number of virtual processors
 vcpu=$(grep "^processor" /proc/cpuinfo | wc -l)
 
 #Print the current available RAM on your server and its utilization rate as a percentage
@@ -15,12 +15,12 @@ pram=$(free | awk '$1 == "Mem:" {printf("%.2f"), $3/$2*100}')
 #Print the current available memory on your server and its utilization rate as a percentage
 fdisk=$(df -Bg | grep '^/dev/' | grep -v '/boot$' | awk '{ft += $2} END {print ft}')
 udisk=$(df -Bm | grep '^/dev/' | grep -v '/boot$' | awk '{ut += $3} END {print ut}')
-pdisk=$(df -Bm | grep '^/dev/' | grep -v '/boot$' | awk '{ut += $3} {ft+= $2} END {printf("%d"), ut/ft*100}')
+pdisk=$(df -Bm | grep '^/dev/' | grep -v '/boot$' | awk '{ut += $3} {ft += $2} END {printf("%d"), ut/ft*100}')
 
 #Print the current utilization rate of your processors as a percentage
 cpul=$(top -bn1 | grep '^%Cpu' | cut -c 9- | xargs | awk '{printf("%.1f%%"), $1 + $3}')
 
-#Print he date and time of the last reboot
+#Print the date and time of the last reboot
 lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
 
 #Print whether LVM is active or not
@@ -39,6 +39,8 @@ mac=$(ip link show | awk '$1 == "link/ether" {print $2}')
 
 #Print the number of commands executed with the sudo program
 cmds=$(grep sudo /var/log/auth.log -a | wc -l)
+
+#Print the varibles above on the terminal
 wall "  #Architecture: $arc
         #CPU physical: $pcpu
         #vCPU: $vcpu

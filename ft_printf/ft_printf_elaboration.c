@@ -6,16 +6,16 @@
 /*   By: igncipri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 19:54:21 by igncipri          #+#    #+#             */
-/*   Updated: 2023/01/24 21:32:21 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:07:10 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_ptr(uintptr_t ptr)
+int ft_print_ptr(uintptr_t ptr)
 {
-	char	*dest;
-	int		print_length;
+	char *dest;
+	int print_length;
 
 	if (ptr)
 	{
