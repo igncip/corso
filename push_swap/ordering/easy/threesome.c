@@ -6,7 +6,7 @@
 /*   By: igncipri <igncipri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 19:38:59 by igncipri          #+#    #+#             */
-/*   Updated: 2023/03/31 22:09:00 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:41:57 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,35 +39,7 @@ void	order_a(bag *b)
 	}
 	return;
 }
-/*
-//123; 132; 213; 231; 312; 321
-void	order_b(bag *b)
-{
-	if (n1 < n2 && n2 < n3)
-		return;
-	else if (n1 < n3 \
-		&& n3 < n2)
-	{
-		sb(b);
-		rrb(b);
-	}
-	else if (n2 < n1 \
-		&& n1 < n3)
-		sb(b);
-	else if (n3 < n1 \
-		&& n1 < n2)
-		rb(b);
-	else if (n2 < n3 \
-		&& n3 < n1)
-		rrb(b);
-	else if (n3 < n2 && n2 < n1)
-	{
-		sb(b);
-		rb(b);
-	}
-	return;
-}
-*/
+
 void	threesome(bag *b)
 {
 	order_a(b);

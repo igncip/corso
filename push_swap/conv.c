@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   conv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igncipri <igncipri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 21:56:37 by igncipri          #+#    #+#             */
-/*   Updated: 2023/04/06 21:43:56 by igncipri         ###   ########.fr       */
+/*   Created: 2023/04/06 22:44:55 by igncipri          #+#    #+#             */
+/*   Updated: 2023/04/06 22:51:58 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void conv(int ac, char **av, bag *box)
 {
-	bag	box;
+	int	i;
+	list	*node;
 
-	if(argck (argc, **argv))
+	i = -1;
+	while(++i <= ac)
 	{
-		write(1, "Error", 5);
-		return (0);
+		node = (list *)ft_calloc(1, sizeof(list));
+		if(!node)
+		{
+			ft_free(node);
+			return(1);
+		}
+		node.arg = ft_atoi (*av[i + 1]);
+		node->islis = 0;
+		ft_lstadd_back (box->a, node);
 	}
-	box = (* bag) ft_calloc (1, sizeof(bag));
-	conv (argc, **argv, box);
-	return(0);
+	box->argnum = ac - 1;
 }
+//protrei ampliare con ft_join e ft_split per unire e riseparare correttamante gli av anche se passati come str unica

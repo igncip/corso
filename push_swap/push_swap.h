@@ -6,7 +6,7 @@
 /*   By: igncipri <igncipri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:57:08 by igncipri          #+#    #+#             */
-/*   Updated: 2023/04/06 19:03:40 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:08:36 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,9 @@ typedef struct
 {
 	list	*a;
 	list	*b;
-	list	higest;
-	list	lowest;
-	list	midnbr;
+	list	lis_lengh;
 	int		argnum;
 }	bag;
 
-to_do:
-ft_free con il void
-free_node creare funzione
-
-push_swap
-	prepare
-		join
-		split
-		arg_count
-	check
-		valid_nbr
-			is_int
-		duplicate_nbr
-
-		free
-		error
-	conversion
-		
-	elaboration
-	return
 
 #endif
