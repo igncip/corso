@@ -6,7 +6,7 @@
 /*   By: igncipri <igncipri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:57:08 by igncipri          #+#    #+#             */
-/*   Updated: 2023/03/28 19:10:18 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:03:40 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct node
 {
 	int			arg;
+	int			islis;
 	struct node	*nxt;
 	struct node	*bak;
 }	list;

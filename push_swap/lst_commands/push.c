@@ -6,7 +6,7 @@
 /*   By: igncipri <igncipri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:45:14 by igncipri          #+#    #+#             */
-/*   Updated: 2023/03/28 19:10:20 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:00:40 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,20 @@ void	push(list *list_1, list *list_2)
 	list_2 = n0_l1;
 }
 
-void	pa(bag box)
+//push first b in a
+void	pa(bag *box)
 {
+	box->b = box->b->nxt;
 	push(box->b, box->a);
+	box->a = ff(box->a);
 	write(1,"pa\n",3);
 }
 
-void	pb(bag box)
+//push first a in b
+void	pb(bag *box)
 {
+	box->a = box->a->nxt;
 	push(box->a, box->b);
+	box->b = ff(box->b);
 	write(1,"pb\n",3);
 }

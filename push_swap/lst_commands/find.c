@@ -6,7 +6,7 @@
 /*   By: igncipri <igncipri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:57:52 by igncipri          #+#    #+#             */
-/*   Updated: 2023/03/28 19:10:23 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:17:43 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,15 @@ list *flo(list *lst)
 		lst_cpy = lst_cpy->nxt;
 	}
 	return(n);
+}
+
+//find arg
+list *farg(list *lst, int arg)
+{
+	list *lst_cpy;
+
+	lst_cpy = lst;
+	while (lst_cpy->arg != arg)
+		lst_cpy = lst_cpy->nxt;
+	return (lst_cpy);
 }

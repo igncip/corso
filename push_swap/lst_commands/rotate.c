@@ -6,44 +6,46 @@
 /*   By: igncipri <igncipri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:45:18 by igncipri          #+#    #+#             */
-/*   Updated: 2023/03/28 19:10:19 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:56:39 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 //Primo diventa ultimo
-void	rotate(list *list)
+void	rotate(list *lst)
 {
-	list *node_0;
-	list *node_1;
-	list *node_n;
+	list *n_0;
+	list *n_1;
+	list *n_n;
 
-	node_0 = ff(list);
-	node_1 = node_0->nxt;
-	node_n = fl(list);
-	node_1->bak = NULL;
-	node_n->nxt = node_0;
-	node_0->bak = node_n;
-	node_0->nxt = NULL;
-	list = node_1;
+	n_0 = ff(lst);
+	n_1 = n_0->nxt;
+	n_n = fl(lst);
+	n_1->bak = NULL;
+	n_n->nxt = n_0;
+	n_0->bak = n_n;
+	n_0->nxt = NULL;
+	lst = n_1;
 }
 
-void	ra(bag bag)
+void	ra(bag *box)
 {
-	rotate(bag->a);
+	rotate(box->a);
+	box->a = ff(box->a);
 	write(1,"ra\n",3);
 }
 
-void	rb(bag bag)
+void	rb(bag *box)
 {
-	rotate(bag->b);
+	rotate(box->b);
+	box->b = ff(box->b);
 	write(1,"rb\n",3);
 }
 
-void	rr(bag bag)
+void	rr(bag *box)
 {
-	rotate(bag->a);
-	rotate(bag->b);
+	rotate(box->a);
+	rotate(box->b);
 	write(1,"rr\n",3);
 }

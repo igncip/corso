@@ -6,13 +6,13 @@
 /*   By: igncipri <igncipri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:17:14 by igncipri          #+#    #+#             */
-/*   Updated: 2023/03/28 21:37:32 by igncipri         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:04:29 by igncipri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void conv(int ac, char **av, bag box)
+void conv(int ac, char **av, bag *box)
 {
 	int	i;
 	list	*node;
@@ -27,6 +27,32 @@ void conv(int ac, char **av, bag box)
 			return(1);
 		}
 		node.arg = ft_atoi (*av[i + 1]);
+		node->islis = 0;
 		ft_lstadd_back (box->a, node);
 	}
 }
+/*
+char *ft_joiner(int ac, char **av)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	while (++i <= ac)
+	{
+		str = ft_join (str, " ");
+		str = ft_join (str, av[i]);
+	}
+	return (str);
+}
+
+char **ft_splitter(char *str, char c)
+{
+
+}
+
+ft_new_argc()
+{
+
+}
+*/
