@@ -11,7 +11,7 @@ void	ft_lst_delete(t_list **stack)
 	while (*stack != NULL)
 	{
 		tmp = (*stack)->nxt;
-		free (*stack);
+		ft_free (*stack);
 		*stack = tmp;
 	}
 }

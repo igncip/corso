@@ -1,4 +1,3 @@
-#include "./libft/libft.h"
 #include "push_swap.h"
 
 void	ft_which_order(t_list **stack_a, t_list **stack_b, int size)
